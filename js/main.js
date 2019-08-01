@@ -1,13 +1,16 @@
 $(function(){
-    $('#button').on('click', (evt)=>{
+    $('#button').on('click', ()=>{
         let $inputV =  $('#skills').val();
         let format = 
         `<tr>
-        <td><button id='box'>x</button>
-        <td id='c'>${$inputV}</td>
+            <td>${$inputV}<button id='box'>x</button></td>
         </tr>`
-        console.log(format);
         $('tbody').append(format);
         $('#skills').val(' ');
+    })
+
+    $('table tbody').on('click', 'button', (evt)=>{
+        console.log(evt.target)
+        $(evt.target).closest('td').remove()
     })
 });
